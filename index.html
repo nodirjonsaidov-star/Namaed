@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Menejer</title>
+    <meta name="description" content="Deadline bilan oddiy task menejer" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Shaxsiy boshqaruv</p>
+          <h1>Task Menejer</h1>
+          <p class="subtext">Vazifalarni qo‘shing, deadline belgilang va bajarilganlarini kuzating.</p>
+        </div>
+        <button id="clearCompletedBtn" class="ghost-btn" type="button">Bajarilganlarni tozalash</button>
+      </header>
+
+      <main class="layout">
+        <section class="panel form-panel">
+          <h2>Yangi vazifa</h2>
+          <form id="taskForm" class="task-form">
+            <label>
+              <span>Vazifa nomi</span>
+              <input id="title" name="title" type="text" placeholder="Masalan: Hisobot yuborish" required />
+            </label>
+
+            <div class="grid-2">
+              <label>
+                <span>Muhimlik</span>
+                <select id="priority" name="priority">
+                  <option>Yuqori</option>
+                  <option selected>O‘rta</option>
+                  <option>Past</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Kategoriya</span>
+                <select id="category" name="category">
+                  <option selected>Ish</option>
+                  <option>Aloqa</option>
+                  <option>Moliya</option>
+                  <option>Shaxsiy</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              <span>Deadline</span>
+              <input id="deadline" name="deadline" type="date" />
+            </label>
+
+            <button class="primary-btn" type="submit">Vazifa qo‘shish</button>
+          </form>
+        </section>
+
+        <aside class="panel stats-panel">
+          <h2>Statistika</h2>
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span>Jami</span>
+              <strong id="totalCount">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Bajarilgan</span>
+              <strong id="doneCount">0</strong>
+            </article>
+            <article class="stat-card wide">
+              <span>Muddati o‘tgan</span>
+              <strong id="overdueCount">0</strong>
+            </article>
+          </div>
+
+          <div class="progress-block">
+            <div class="progress-labels">
+              <span>Progress</span>
+              <span id="progressText">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div id="progressFill"></div>
+            </div>
+          </div>
+        </aside>
+      </main>
+
+      <section class="panel list-panel">
+        <div class="toolbar">
+          <div class="filters" role="tablist" aria-label="Task filter">
+            <button class="filter-btn active" data-filter="all" type="button">Hammasi</button>
+            <button class="filter-btn" data-filter="active" type="button">Faol</button>
+            <button class="filter-btn" data-filter="done" type="button">Bajarilgan</button>
+          </div>
+
+          <input id="searchInput" class="search-input" type="search" placeholder="Qidirish..." />
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+        <div id="emptyState" class="empty-state hidden">Vazifalar topilmadi</div>
+      </section>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
